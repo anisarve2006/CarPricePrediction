@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Used Car Price Prediction</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .form-container {
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
+      margin-top: 50px;
+      margin-bottom: 50px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">Car Price Predictor</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" 
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </nav>
+  
+  <!-- Main Container -->
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8 form-container">
+        <h2 class="text-center mb-4">Used Car Price Prediction</h2>
+        <form action="/predict" method="post">
+          <div class="form-group">
+            <label for="model">Car Model:</label>
+            <input type="text" class="form-control" id="model" name="model" placeholder="Enter Car Model" required>
+          </div>
+          <div class="form-group">
+            <label for="year">Year:</label>
+            <input type="number" class="form-control" id="year" name="year" placeholder="Enter Year" required>
+          </div>
+          <div class="form-group">
+            <label for="transmission">Transmission:</label>
+            <select class="form-control" id="transmission" name="transmission">
+              <option value="Manual">Manual</option>
+              <option value="Automatic">Automatic</option>
+              <option value="Semi-Auto">Semi-Auto</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="mileage">Mileage:</label>
+            <input type="number" class="form-control" id="mileage" name="mileage" placeholder="Enter Mileage" required>
+          </div>
+          <div class="form-group">
+            <label for="fuel_type">Fuel Type:</label>
+            <select class="form-control" id="fuel_type" name="fuel_type">
+              <option value="Petrol">Petrol</option>
+              <option value="Diesel">Diesel</option>
+              <option value="Hybrid">Hybrid</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="tax">Tax:</label>
+            <input type="number" class="form-control" id="tax" name="tax" placeholder="Enter Tax" required>
+          </div>
+          <div class="form-group">
+            <label for="mpg">MPG:</label>
+            <input type="number" step="0.1" class="form-control" id="mpg" name="mpg" placeholder="Enter MPG" required>
+          </div>
+          <div class="form-group">
+            <label for="engine_size">Engine Size:</label>
+            <input type="number" step="0.1" class="form-control" id="engine_size" name="engine_size" placeholder="Enter Engine Size" required>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Predict Price</button>
+        </form>
+        <!-- Display Prediction Result -->
+        {% if prediction_text %}
+        <div class="alert alert-info mt-4" role="alert">
+          <h4 class="alert-heading">Prediction</h4>
+          <p>{{ prediction_text }}</p>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
