@@ -1,1 +1,7 @@
 pip install flask numpy pandas scikit-learn
+
+# Training the model
+python model.py
+
+# Running Project 
+python app.py
